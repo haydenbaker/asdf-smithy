@@ -20,6 +20,3 @@ jobs:
         uses: asdf-vm/actions/plugin-test@v2
         with:
           command: smithy --help
-        env:
-          GITHUB_API_TOKEN: ""
-
