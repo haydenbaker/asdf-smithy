@@ -8,4 +8,15 @@ plugin_dir=$(dirname "$(dirname "$current_script_path")")
 # shellcheck source=../lib/utils.bash
 source "${plugin_dir}/lib/utils.bash"
 
-download_release "${ASDF_INSTALL_TYPE:=$1}" "${ASDF_INSTALL_VERSION:=$2}" "${ASDF_DOWNLOAD_PATH:=$3}"
+mkdir -p "$ASDF_DOWNLOAD_PATH"
+
+release_file="$ASDF_DOWNLOAD_PATH/smithy-cli-linux-x86_64.zip"
+
+# Download distribution file to the download directory
+download_release "$ASDF_INSTALL_VERSION" "$release_file"
+
+#  Extract contents of distribution file into the download directory
+extract_release "$ASDF_INSTALL_VERSION" "$release_file" || fail "Could not extract $release_file"
+
+# Remove the distribution file since we don't need to keep it
+rm "$release_file"

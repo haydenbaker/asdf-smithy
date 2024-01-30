@@ -1,46 +1,45 @@
-## asdf-smithy
+<div align="center">
 
-Install the [Smithy](https://smithy.io) CLI using [asdf](https://asdf-vm.com).
+# asdf-smithy [![Build](https://github.com/haydenbaker/asdf-smithy/actions/workflows/build.yml/badge.svg)](https://github.com/haydenbaker/asdf-smithy/actions/workflows/build.yml)
 
-*asdf* is a tool that makes it easy to install mutliple versions of a tool
-on Linux or macOS. *asdf-smithy* is an asdf plugin that allows you to install
-different versions of the Smithy CLI using asdf.
+[smithy](https://github.com/haydenbaker/smithy) plugin for the [asdf version manager](https://asdf-vm.com).
 
+</div>
 
-## Installation
+# Contents
 
-First, install asdf by following their
-[getting started guide](https://asdf-vm.com/guide/getting-started.html)
+- [Dependencies](#dependencies)
+- [Install](#install)
 
-Next, setup Smithy with asdf using:
+# Dependencies
 
-```
-asdf plugin add smithy https://github.com/aws/asdf-smithy.git
-```
+- `bash`, `curl`, `tar`: generic POSIX utilities.
+- `SOME_ENV_VAR`: set this environment variable in your shell config to load the correct version of tool x.
 
-Finally, you can use the latest version of the Smithy CLI using:
+# Install
 
-```
-asdf install smithy latest
-```
-
-## Testing:
+Plugin:
 
 ```shell
-# asdf plugin test <plugin-name> <plugin-url> [--asdf-tool-version <version>] [--asdf-plugin-gitref <git-ref>] [test-command*]
-asdf plugin test smithy https://github.com/aws/asdf-smithy.git "smithy --help"
+asdf plugin add smithy
+# or
+asdf plugin add smithy https://github.com/haydenbaker/asdf-smithy.git
 ```
-Tests are automatically run in GitHub Actions on push and PR.
 
-Additional asdf usage information can be found in
-[the asdf documentation](https://asdf-vm.com/guide/getting-started.html#_4-install-a-plugin).
+smithy:
 
+```shell
+# Show all installable versions
+asdf list-all smithy
 
-## Security
+# Install specific version
+asdf install smithy latest
 
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+# Set a version globally (on your ~/.tool-versions file)
+asdf global smithy latest
 
-## License
+# Now smithy commands are available
+smithy --version
+```
 
-This project is licensed under the Apache-2.0 License.
-
+Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to install & manage versions.
