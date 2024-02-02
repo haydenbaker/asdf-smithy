@@ -70,7 +70,7 @@ get_artifact_url() {
     else
       tag=$2
     fi
-    echo "$GH_REPO/releases/download/$tag/smithy-cli-$1.tar.gz"
+    echo "$GH_REPO/releases/download/$tag/smithy-cli-$1.zip"
   else
     fail "platform or version were not specified."
   fi
