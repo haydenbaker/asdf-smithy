@@ -88,7 +88,7 @@ download_release() {
     echo "* Downloading $TOOL_NAME release ($version)..."
     url=$(get_artifact_url "$(get_platform)-$(get_arch)" "$version")
     if [ "$url" ]; then
-      curl "${curl_opts[@]}" "$url" | tar xzf - -C "$path" ||
+      curl "${curl_opts[@]}" "$url" | tar xzf - -C "$path" --strip-components 1 ||
         fail "Request to '$url' returned bad response ($?)."
     else
       fail "Could not form url."
