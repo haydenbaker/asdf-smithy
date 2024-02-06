@@ -118,7 +118,8 @@ install_version() {
 
   (
     mkdir -p "$path"
-    chmod +x "$download_path"/bin/*
+    # zips don't maintain permissions, so we need to add x perms to the right files
+    chmod +x "$download_path"/bin/* "$download_path"/lib/jspawnhelper
     cp -r "$download_path"/* "$path"
 
     # assert smithy exists and runs
