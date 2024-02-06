@@ -88,6 +88,7 @@ download_release() {
     echo "* Downloading $TOOL_NAME release ($version)..."
     url=$(get_artifact_url "$(get_platform)-$(get_arch)" "$version")
     if [ "$url" ]; then
+      mkdir -p "$path"
       curl "${curl_opts[@]}" "$url" | tar xzf - -C "$path" --strip-components 1 ||
         fail "Request to '$url' returned bad response ($?)."
     else
@@ -117,6 +118,7 @@ install_version() {
 
   (
     mkdir -p "$path"
+    chmod +x "$download_path"/bin/*
     cp -r "$download_path"/* "$path"
 
     # assert smithy exists and runs
